@@ -86,7 +86,7 @@ The script assumes each outTable contains at least these columns:
 ---
 
 ### User edits required
-None. This script is fully driven by command-line arguments. :contentReference[oaicite:5]{index=5}
+None. This script is fully driven by command-line arguments.
 
 ---
 
