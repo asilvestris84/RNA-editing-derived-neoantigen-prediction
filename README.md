@@ -236,7 +236,7 @@ Before execution, the Neoantimon output directory must be edited at the top of t
 
 ```r
 data_folder <- "path/to/neoantimon_output_directory/"
-
+```
 The directory must contain the filtered_*.ALL.txt files.
 ---
 
