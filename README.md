@@ -270,8 +270,41 @@ file_list <- "path/to/priority_score_file_list.txt"
 ---
 
 ### `bubble_plot.R`
-Generates bubble plots to visualize prioritized neoantigens, typically integrating binding affinity, expression level, and prioritization score.
+### Bubble plot of RNA editing–derived neoantigens across GTEx tissues
 
+### Purpose
+This script generates a **bubble plot** summarizing the distribution of RNA editing–derived neoantigens across **GTEx healthy tissues**.  
+The visualization integrates, for each RNA editing site:
+
+- tissue specificity (GTEx tissues)
+- median RNA editing frequency
+- prevalence across healthy samples
+
+The plot is designed to contextualize candidate neoantigens with respect to their presence in normal tissues.
+
+---
+
+### Input requirements
+A **tab-delimited file** containing GTEx annotations for RNA editing sites, with at least the following columns:
+
+- `Gene`
+- `Mutation_Position_Hg38`
+- `Healthy_Tissues`  
+- `Median_Editing_Frequency_.`
+- `SRR_Samples_.`
+
+The script assumes that:
+- `Healthy_Tissues` may contain **comma-separated values**
+- `Median_Editing_Frequency_.` and `SRR_Samples_.` may also be comma-separated and are coerced to numeric
+
+---
+
+### User edits required
+Before execution, the **input file path must be edited** in the script:
+
+```r
+data <- read.delim("path/to/common_strong_binders_with_GTEx_data.tsv", stringsAsFactors = FALSE)
+```
 ## Input data requirements
 
 The pipeline assumes availability of:
