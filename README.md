@@ -276,7 +276,7 @@ file_list <- "path/to/priority_score_file_list.txt"
 This script generates a **bubble plot** summarizing the distribution of RNA editing–derived neoantigens across **GTEx healthy tissues**.  
 The visualization integrates, for each RNA editing site:
 
-- tissue specificity (GTEx tissues)
+- tissue specificity (GTEx tissues from REDIportal)
 - median RNA editing frequency
 - prevalence across healthy samples
 
