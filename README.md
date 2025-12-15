@@ -239,7 +239,7 @@ data_folder <- "path/to/neoantimon_output_directory/"
 ```
 The directory must contain the filtered_*.ALL.txt files.
 ---
-
+---
 ### `make_PS_heatmap.R`
 Generates heatmaps summarizing prioritization scores across samples or conditions.
 
