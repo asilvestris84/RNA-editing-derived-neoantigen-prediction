@@ -23,8 +23,25 @@ The workflow supports:
 ## Script descriptions
 
 ### `last_Neoantimon_improved.R`
-Main analysis script implementing the core pipeline for RNA editing–derived neoantigen prediction.  
-It integrates RNA editing calls, DNA-based variant filtering, peptide generation, HLA binding prediction, and output formatting for downstream analyses.
+### Neoantigen prediction from RNA editing using Neoantimon (MHC class I and II)
+
+### Function
+This script is the core execution step of the pipeline. It runs Neoantimon on ANNOVAR-annotated RNA-seq variants to generate candidate neoantigens derived from RNA editing events. For each sample, it integrates:
+- RNA editing–derived variants
+- matched RNA expression
+- sample-specific HLA typing
+- MHC class I and class II binding prediction
+
+### Input requirements
+- One or more `hg38_multianno.txt` files (ANNOVAR output) located in the working directory  
+- A text file containing one path per line to HLA typing results  
+- A text file containing one path per line to RNA expression files  
+
+### User edits required
+The following hardcoded paths **must be edited** before execution:
+```r
+hla_paths <- "path/to/hla_paths.txt"
+gene_expression_path <- "path/to/gene_expression_paths.txt"
 
 ---
 
