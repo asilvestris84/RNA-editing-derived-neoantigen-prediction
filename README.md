@@ -39,7 +39,7 @@ This script is the core execution step of the pipeline. It runs Neoantimon on AN
 
 ### User edits required
 The following hardcoded paths **must be edited** before execution:
-```r
+```
 hla_paths <- "path/to/hla_paths.txt"
 gene_expression_path <- "path/to/gene_expression_paths.txt"
 
