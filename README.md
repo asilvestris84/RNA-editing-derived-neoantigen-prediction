@@ -16,7 +16,7 @@ The workflow supports:
 - Comparative filtering using matched Whole Genome Sequencing (WGS) or Whole Exome Sequencing (WES)
 - Identification of recoding RNA editing events
 - Generation of edited and unedited peptide sequences
-- MHC class I binding prediction
+- MHC class I and class II binding prediction
 - Systematic prioritization of candidate neoantigens
 - Downstream statistical analysis and visualization
 
