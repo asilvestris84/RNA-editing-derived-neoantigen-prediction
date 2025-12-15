@@ -43,7 +43,7 @@ The following hardcoded paths **must be edited** before execution:
 hla_paths <- "path/to/hla_paths.txt"
 gene_expression_path <- "path/to/gene_expression_paths.txt"
 
----
+---r
 
 ### `alle_gen.R`
 
