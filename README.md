@@ -171,11 +171,6 @@ Rscript calc_priority_score2.R file1.tsv file2.tsv
 ```
 ---
 
-### `bubble_plot.R`
-Generates bubble plots to visualize prioritized neoantigens, typically integrating binding affinity, expression level, and prioritization score.
-
----
-
 ### `comm_plotgra.R`
 Produces comparative graphical summaries across experimental conditions or sample groups.
 
@@ -185,6 +180,9 @@ Produces comparative graphical summaries across experimental conditions or sampl
 Generates heatmaps summarizing prioritization scores across samples or conditions.
 
 ---
+
+### `bubble_plot.R`
+Generates bubble plots to visualize prioritized neoantigens, typically integrating binding affinity, expression level, and prioritization score.
 
 ## Input data requirements
 
