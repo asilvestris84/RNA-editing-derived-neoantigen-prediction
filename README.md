@@ -103,7 +103,7 @@ Rscript alle_gen.R <sample_names.txt> "<neoantimon_output_folder_or_glob>" <redi
 `calc_priority_score2.R` computes a **hierarchical PriorityScore** to systematically rank candidate neoantigens by integrating:  
 1) **RNA expression support** (`Total_RNA`)  
 2) **Editing frequency** (`Frequency`)  
-3) **Mutant vs wild-type binding improvement** (via `Mut_Rank` and `Wt_Rank`) :contentReference[oaicite:0]{index=0}
+3) **Mutant vs wild-type binding improvement** (via `Mut_Rank` and `Wt_Rank`)
 
 This script is designed to prioritize candidates that are **supported by RNA evidence** (expressed and frequent) while still accounting for the **gain in predicted binding**.
 
