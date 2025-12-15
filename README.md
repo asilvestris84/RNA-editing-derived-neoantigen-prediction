@@ -196,7 +196,7 @@ Each `.ALL.txt` file must contain at least the following columns:
 ---
 
 ### Strong binder definition
-A neoantigen is considered a **strong binder** if: Mut_Rank ≤ 0.5 for MHC I; Mut_Rank ≤ 1 for MHC II
+A neoantigen is considered a **strong binder** if: % Mut_Rank ≤ 0.5 for MHC I; % Mut_Rank ≤ 1 for MHC II
 The script explicitly converts `Mut_Rank` to numeric before applying this threshold.
 
 ---
