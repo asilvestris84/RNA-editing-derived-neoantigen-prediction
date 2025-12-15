@@ -45,6 +45,8 @@ gene_expression_path <- "path/to/gene_expression_paths.txt"
 
 ---
 
+### `alle_gen.R`
+
 ### `calc_priority_score2.R`
 Computes a composite prioritization score for candidate neoantigens based on multiple features, including predicted MHC binding, expression-related metrics, and recoding properties.
 
@@ -62,11 +64,6 @@ Produces comparative graphical summaries across experimental conditions or sampl
 
 ### `make_PS_heatmap.R`
 Generates heatmaps summarizing prioritization scores across samples or conditions.
-
----
-
-### `new_recoding_heatmap_matrix2.R`
-Builds heatmap-ready matrices focusing on recoding RNA editing events and their derived neoantigens.
 
 ---
 
