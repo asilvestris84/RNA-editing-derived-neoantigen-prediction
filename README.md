@@ -89,4 +89,4 @@ Please refer to the LICENSE file for details.
 
 ## Contact
 
-For questions or issues related to the pipeline, please open an issue in this repository.
+For questions or issues related to the pipeline, please open an issue in this repository or contact me at domenico.silvestris@uniba.it.
