@@ -53,7 +53,7 @@ For each sample, it matches Neoantimon events to REDItools sites and writes an u
 
 ---
 
-### How it works (what it actually does)
+### How it works
 For each sample name provided:
 1. Finds Neoantimon tables matching `*ALL*` inside a user-provided folder (supports wildcards/globs).
 2. Reads the corresponding REDItools outTable for that sample.
