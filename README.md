@@ -241,7 +241,31 @@ The directory must contain the filtered_*.ALL.txt files.
 ---
 ---
 ### `make_PS_heatmap.R`
-Generates heatmaps summarizing prioritization scores across samples or conditions.
+### Heatmap of neoantigen PriorityScore across samples
+
+### Purpose
+This script generates a **peptide-by-sample heatmap** summarizing the **PriorityScore** of RNA editing–derived neoantigens across samples.  
+Each row represents a unique neoantigen (gene + mutant peptide), while each column represents a sample.
+
+The heatmap is intended to visualize the distribution and recurrence of high-priority neoantigens across the cohort.
+
+---
+
+### Input requirements
+- A **text file** containing **one full path per line** to PriorityScore tables produced by `calc_priority_score2.R`.
+
+Each PriorityScore table must contain at least the following columns:
+- `Gene`
+- `Evaluated_Mutant_Peptide`
+- `PriorityScore`
+
+---
+
+### User edits required
+Before execution, edit the following parameter at the top of the script:
+
+```r
+file_list <- "path/to/priority_score_file_list.txt"
 
 ---
 
