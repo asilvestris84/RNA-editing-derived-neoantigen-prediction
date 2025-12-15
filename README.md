@@ -110,14 +110,14 @@ This script is designed to prioritize candidates that are **supported by RNA evi
 ---
 
 ### Input requirements
-Provide one or more **tab-delimited** files (e.g. `.txt`, `.tsv`, `.tab`) containing at least these columns: :contentReference[oaicite:1]{index=1}
+Provide one or more **tab-delimited** files (e.g. `.txt`, `.tsv`, `.tab`) containing at least these columns:
 
 - `Mut_Rank`  (mutant peptide binding rank/percentile)
 - `Wt_Rank`   (wild-type peptide binding rank/percentile)
 - `Frequency` (RNA editing frequency nG/(nA+nG)
 - `Total_RNA` (RNA abundance TPM)
 
-If any of these columns are missing, the script stops with an error. :contentReference[oaicite:2]{index=2}
+If any of these columns are missing, the script stops with an error.
 
 ---
 
@@ -128,7 +128,7 @@ The script computes the mutant-to-wild-type ratio:
 \[
 \Delta Rank = \frac{Mut\_Rank}{Wt\_Rank}
 \]
-Lower values (< 1) indicate that the mutant is predicted to bind better than the wild-type. :contentReference[oaicite:3]{index=3}
+Lower values (< 1) indicate that the mutant is predicted to bind better than the wild-type.
 
 #### 2) Normalization
 The script applies min–max normalization:
@@ -139,14 +139,14 @@ x_{norm} = \frac{x - \min(x)}{\max(x) - \min(x)}
 \]
 applied to:
 - `Total_RNA` → `RNA_norm`
-- `Frequency` → `Freq_norm` :contentReference[oaicite:4]{index=4}
+- `Frequency` → `Freq_norm`
 
 **Inverse normalization** (lower = better, then inverted):
 \[
 x_{invnorm} = 1 - \frac{x - \min(x)}{\max(x) - \min(x)}
 \]
 applied to:
-- `DeltaRank` → `DeltaRank_norm` :contentReference[oaicite:5]{index=5}
+- `DeltaRank` → `DeltaRank_norm`
 
 **Edge case handling**  
 If a variable has no range (max = min) or non-finite values, the script assigns `0.5` to all entries for that normalized feature.
@@ -164,7 +164,7 @@ PriorityScore = (RNA_{norm} \times Freq_{norm}) + 0.25 \times \Delta Rank_{norm}
 ---
 
 ### How to run
-Run the script by passing one or more input files as arguments: :contentReference[oaicite:8]{index=8}
+Run the script by passing one or more input files as arguments:
 
 ```bash
 Rscript calc_priority_score2.R file1.tsv file2.tsv
