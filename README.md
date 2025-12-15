@@ -1,6 +1,13 @@
 # RNA-editing-derived-neoantigen-prediction
 Automated and fully reproducible pipeline for the systematic prediction and prioritization of RNA editing–derived neoantigens, based on integrated comparative analysis of RNA-seq and matched WGS/WES data, enabling robust detection of RNA-editing events, recoded peptide generation, MHC binding prediction, and downstream statistical analyses.
 ![Pipeline overview](/images/fcell-08-00728-g001.jpg)
+*Figure adapted from Han X-J, Ma X, Yang L, Wei Y, Peng Y and Wei X (2020) Progress in Neoantigen Targeted Cancer Immunotherapies. Front. Cell Dev. Biol. 8:728. doi: 10.3389/fcell.2020.00728*
+
+## Tools cited
+
+This pipeline uses **Neoantimon** (DOI: 10.1093/bioinformatics/btaa901) for neoantigen prediction from annotated variants.  
+Neoantimon performs per-sample peptide generation and MHC binding affinity prediction using **netMHCpan** and **netMHCIIpan**.
+
 ## Scope of the pipeline
 
 The workflow supports:
