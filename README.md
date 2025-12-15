@@ -172,8 +172,72 @@ Rscript calc_priority_score2.R file1.tsv file2.tsv
 ---
 
 ### `comm_plotgra.R`
-Produces comparative graphical summaries across experimental conditions or sample groups.
+### Neoantigen co-occurrence analysis and non-redundant strong binder export
 
+### Purpose
+This script performs a downstream aggregation of Neoantimon output tables to:
+1. Compute **sample-by-sample co-occurrence** of RNA editing–derived neoantigens.
+2. Generate a **non-redundant table of strong-binding neoantigens** shared across samples.
+
+The analysis is based exclusively on **strong binders**, defined using the Neoantimon binding rank.
+
+---
+
+### Input requirements
+- A directory containing Neoantimon output tables with filenames matching: filtered_*.ALL.txt
+Each `.ALL.txt` file must contain at least the following columns:
+- `Mut_Rank`
+- `Evaluated_Mutant_Peptide`
+- `Gene`
+- `NM_ID`
+- `Change`
+- `Mutation_Position`
+
+---
+
+### Strong binder definition
+A neoantigen is considered a **strong binder** if: Mut_Rank ≤ 0.5 for MHC I; Mut_Rank ≤ 1 for MHC II
+The script explicitly converts `Mut_Rank` to numeric before applying this threshold.
+
+---
+
+### What the script does
+
+#### 1. Neoantigen collection per sample
+For each Neoantimon `.ALL.txt` file:
+- Strong binders are filtered based on `Mut_Rank`.
+- Unique mutant peptide sequences (`Evaluated_Mutant_Peptide`) are stored per sample.
+
+#### 2. Co-occurrence matrix computation
+- A binary presence/absence matrix (peptide × sample) is constructed.
+- A sample-by-sample co-occurrence matrix is computed as:
+
+C = t(P) %*% P
+
+where `P` is the binary presence matrix.
+- The diagonal and upper triangle are masked to avoid redundancy.
+- Sample identifiers are extracted from filenames (e.g. `ICGC_XXXX`).
+#### 3. Non-redundant strong binder table
+- Strong binders from all samples are pooled.
+- Entries are collapsed by `Evaluated_Mutant_Peptide`.
+- For each unique peptide, the following fields are reported:
+- `Gene` (numeric prefixes removed)
+- `NM_ID`
+- `Change`
+- `Mutation_Position`
+- `Peptide_Sequence`
+- `Samples` (comma-separated list)
+- `N_Samples` (number of distinct samples)
+
+---
+
+### User edits required
+Before execution, the Neoantimon output directory must be edited at the top of the script:
+
+```r
+data_folder <- "path/to/neoantimon_output_directory/"
+
+The directory must contain the filtered_*.ALL.txt files.
 ---
 
 ### `make_PS_heatmap.R`
