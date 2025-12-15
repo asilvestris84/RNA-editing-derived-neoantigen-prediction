@@ -5,7 +5,7 @@ Automated and fully reproducible pipeline for the systematic prediction and prio
 
 ## Tools cited
 
-This pipeline uses **Neoantimon** (DOI: 10.1093/bioinformatics/btaa901) for neoantigen prediction from annotated variants.  
+This pipeline uses **Neoantimon** R package (DOI: 10.1093/bioinformatics/btaa901) for neoantigen prediction from annotated variants.  
 Neoantimon performs per-sample peptide generation and MHC binding affinity prediction using **netMHCpan** and **netMHCIIpan**.
 
 ## Scope of the pipeline
