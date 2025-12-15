@@ -266,7 +266,7 @@ Before execution, edit the following parameter at the top of the script:
 
 ```r
 file_list <- "path/to/priority_score_file_list.txt"
-
+```
 ---
 
 ### `bubble_plot.R`
