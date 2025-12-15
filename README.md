@@ -45,7 +45,55 @@ gene_expression_path <- "path/to/gene_expression_paths.txt"
 ```
 ---
 ### `alle_gen.R`
+### Add RNA-editing frequency (REDItools) to Neoantimon `.ALL` output tables
 
+**Purpose**  
+`alle_gen.R` post-processes Neoantimon per-sample `*ALL*` tables by **adding the RNA-editing frequency** for each editing event, **directly taken from REDItools output tables**.  
+For each sample, it matches Neoantimon events to REDItools sites and writes an updated `.ALL` table including a new `Frequency` column. :contentReference[oaicite:0]{index=0}
+
+---
+
+### How it works (what it actually does)
+For each sample name provided:
+1. Finds Neoantimon tables matching `*ALL*` inside a user-provided folder (supports wildcards/globs).
+2. Reads the corresponding REDItools outTable for that sample.
+3. Builds a REDItools site key as:
+   - `Region_Position` (concatenation of `Region` and `Position` from REDItools)
+4. Matches Neoantimon `Mutation_Position` against that key and assigns:
+   - `Frequency = ot$Frequency[match(...)]`
+5. Inserts `Frequency` immediately after `Mutation_Position` and writes the updated table.
+
+---
+
+### Input requirements
+You must provide **three arguments** to the script:
+
+1) **Sample name list file** (one sample ID per line)  
+This is required because the script uses these sample IDs to select the correct files. :contentReference[oaicite:1]{index=1}
+
+2) **Folder (or wildcard path) containing Neoantimon outputs**, where Neoantimon files include `*ALL*` in the name  
+Example wildcard: `"/path/to/result.ID.SNV*"` :contentReference[oaicite:2]{index=2}
+
+3) **A text file listing paths to REDItools outTables** (one per line)  
+The script assumes each outTable contains at least these columns:
+- `Region`
+- `Position`
+- `Frequency` :contentReference[oaicite:3]{index=3}
+
+**Neoantimon `.ALL` tables must contain:**
+- `Mutation_Position` (used for matching) :contentReference[oaicite:4]{index=4}
+
+---
+
+### User edits required
+None. This script is fully driven by command-line arguments. :contentReference[oaicite:5]{index=5}
+
+---
+
+### How to run
+```bash
+Rscript alle_gen.R <sample_names.txt> "<neoantimon_output_folder_or_glob>" <reditools_outTable_paths.txt>
+```
 ---
 
 ### `calc_priority_score2.R`
