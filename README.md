@@ -97,8 +97,78 @@ Rscript alle_gen.R <sample_names.txt> "<neoantimon_output_folder_or_glob>" <redi
 ---
 
 ### `calc_priority_score2.R`
-Computes a composite prioritization score for candidate neoantigens based on multiple features, including predicted MHC binding, expression-related metrics, and recoding properties.
+### PriorityScore computation for RNA editing–derived neoantigens (expression × frequency + binding gain)
 
+**Purpose**  
+`calc_priority_score2.R` computes a **hierarchical PriorityScore** to systematically rank candidate neoantigens by integrating:  
+1) **RNA expression support** (`Total_RNA`)  
+2) **Editing frequency** (`Frequency`)  
+3) **Mutant vs wild-type binding improvement** (via `Mut_Rank` and `Wt_Rank`) :contentReference[oaicite:0]{index=0}
+
+This script is designed to prioritize candidates that are **supported by RNA evidence** (expressed and frequent) while still accounting for the **gain in predicted binding**.
+
+---
+
+### Input requirements
+Provide one or more **tab-delimited** files (e.g. `.txt`, `.tsv`, `.tab`) containing at least these columns: :contentReference[oaicite:1]{index=1}
+
+- `Mut_Rank`  (mutant peptide binding rank/percentile)
+- `Wt_Rank`   (wild-type peptide binding rank/percentile)
+- `Frequency` (editing frequency / prevalence metric)
+- `Total_RNA` (RNA abundance / expression support metric)
+
+If any of these columns are missing, the script stops with an error. :contentReference[oaicite:2]{index=2}
+
+---
+
+### How the PriorityScore is computed
+
+#### 1) Binding improvement (ΔRank)
+The script computes the mutant-to-wild-type ratio:
+\[
+\Delta Rank = \frac{Mut\_Rank}{Wt\_Rank}
+\]
+Lower values (< 1) indicate that the mutant is predicted to bind better than the wild-type. :contentReference[oaicite:3]{index=3}
+
+#### 2) Normalization
+The script applies min–max normalization:
+
+**Positive normalization** (higher = better):
+\[
+x_{norm} = \frac{x - \min(x)}{\max(x) - \min(x)}
+\]
+applied to:
+- `Total_RNA` → `RNA_norm`
+- `Frequency` → `Freq_norm` :contentReference[oaicite:4]{index=4}
+
+**Inverse normalization** (lower = better, then inverted):
+\[
+x_{invnorm} = 1 - \frac{x - \min(x)}{\max(x) - \min(x)}
+\]
+applied to:
+- `DeltaRank` → `DeltaRank_norm` :contentReference[oaicite:5]{index=5}
+
+**Edge case handling**  
+If a variable has no range (max = min) or non-finite values, the script assigns `0.5` to all entries for that normalized feature. :contentReference[oaicite:6]{index=6}
+
+#### 3) Final PriorityScore formula
+The final score is:
+\[
+PriorityScore = (RNA_{norm} \times Freq_{norm}) + 0.25 \times \Delta Rank_{norm}
+\]
+
+- `RNA_norm × Freq_norm` enforces that top candidates are **both expressed and frequent**
+- `0.25 × DeltaRank_norm` adds a weighted contribution from **binding improvement**
+- The weight **α = 0.25** is explicitly hardcoded in the script. :contentReference[oaicite:7]{index=7}
+
+---
+
+### How to run
+Run the script by passing one or more input files as arguments: :contentReference[oaicite:8]{index=8}
+
+```bash
+Rscript calc_priority_score2.R file1.tsv file2.tsv
+```
 ---
 
 ### `bubble_plot.R`
