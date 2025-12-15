@@ -114,8 +114,8 @@ Provide one or more **tab-delimited** files (e.g. `.txt`, `.tsv`, `.tab`) contai
 
 - `Mut_Rank`  (mutant peptide binding rank/percentile)
 - `Wt_Rank`   (wild-type peptide binding rank/percentile)
-- `Frequency` (editing frequency / prevalence metric)
-- `Total_RNA` (RNA abundance / expression support metric)
+- `Frequency` (RNA editing frequency nG/(nA+nG)
+- `Total_RNA` (RNA abundance TPM)
 
 If any of these columns are missing, the script stops with an error. :contentReference[oaicite:2]{index=2}
 
