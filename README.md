@@ -69,19 +69,19 @@ For each sample name provided:
 You must provide **three arguments** to the script:
 
 1) **Sample name list file** (one sample ID per line)  
-This is required because the script uses these sample IDs to select the correct files. :contentReference[oaicite:1]{index=1}
+This is required because the script uses these sample IDs to select the correct files.
 
 2) **Folder (or wildcard path) containing Neoantimon outputs**, where Neoantimon files include `*ALL*` in the name  
-Example wildcard: `"/path/to/result.ID.SNV*"` :contentReference[oaicite:2]{index=2}
+Example wildcard: `"/path/to/result.ID.SNV*"`
 
 3) **A text file listing paths to REDItools outTables** (one per line)  
 The script assumes each outTable contains at least these columns:
 - `Region`
 - `Position`
-- `Frequency` :contentReference[oaicite:3]{index=3}
+- `Frequency`
 
 **Neoantimon `.ALL` tables must contain:**
-- `Mutation_Position` (used for matching) :contentReference[oaicite:4]{index=4}
+- `Mutation_Position` (used for matching)
 
 ---
 
@@ -149,7 +149,7 @@ applied to:
 - `DeltaRank` → `DeltaRank_norm` :contentReference[oaicite:5]{index=5}
 
 **Edge case handling**  
-If a variable has no range (max = min) or non-finite values, the script assigns `0.5` to all entries for that normalized feature. :contentReference[oaicite:6]{index=6}
+If a variable has no range (max = min) or non-finite values, the script assigns `0.5` to all entries for that normalized feature.
 
 #### 3) Final PriorityScore formula
 The final score is:
@@ -159,7 +159,7 @@ PriorityScore = (RNA_{norm} \times Freq_{norm}) + 0.25 \times \Delta Rank_{norm}
 
 - `RNA_norm × Freq_norm` enforces that top candidates are **both expressed and frequent**
 - `0.25 × DeltaRank_norm` adds a weighted contribution from **binding improvement**
-- The weight **α = 0.25** is explicitly hardcoded in the script. :contentReference[oaicite:7]{index=7}
+- The weight **α = 0.25** is explicitly hardcoded in the script.
 
 ---
 
