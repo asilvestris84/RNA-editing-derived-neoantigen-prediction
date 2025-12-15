@@ -49,7 +49,7 @@ gene_expression_path <- "path/to/gene_expression_paths.txt"
 
 **Purpose**  
 `alle_gen.R` post-processes Neoantimon per-sample `*ALL*` tables by **adding the RNA-editing frequency** for each editing event, **directly taken from REDItools output tables**.  
-For each sample, it matches Neoantimon events to REDItools sites and writes an updated `.ALL` table including a new `Frequency` column. :contentReference[oaicite:0]{index=0}
+For each sample, it matches Neoantimon events to REDItools sites and writes an updated `.ALL` table including a new `Frequency` column.
 
 ---
 
