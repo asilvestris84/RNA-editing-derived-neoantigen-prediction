@@ -15,7 +15,7 @@ df_long <- data_unica %>%
     SRR_Samples_. = as.numeric(SRR_Samples_.)
   ) %>%
   filter(Healthy_Tissues != "", !is.na(Median_Editing_Frequency_.))
-df_long$Healthy_Tissues <- factor(df_long$Healthy_Tissues, levels = sort(unique(df_long$Healthy_Tissues)))
+df_long$Healthy_Tissues <- factor(df_long$Healthy_Tissues, rev(levels = sort(unique(df_long$Healthy_Tissues))))
 df_long[[1]] <- paste0(df_long[[1]], "_", df_long[[4]])
 
 # Crea il plot
